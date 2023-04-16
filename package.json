@@ -1,0 +1,19 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "Backend for Movies explorer project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TokarenkoKate/movies-explorer-api.git"
+  },
+  "author": "Kate Tokarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TokarenkoKate/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/TokarenkoKate/movies-explorer-api#readme"
+}
