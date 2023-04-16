@@ -1,6 +1,7 @@
 const { celebrate, Joi } = require('celebrate');
 const router = require('express').Router();
 const { createUser, login } = require('../controllers/users');
+const invalidRouter = require('./invalidRoutes');
 const userRouter = require('./users');
 const moviesRouter = require('./movies');
 const auth = require('../middlewares/auth');
@@ -26,5 +27,7 @@ router.use(auth);
 router.use('/users', userRouter);
 
 router.use('/movies', moviesRouter);
+
+router.use('*', invalidRouter);
 
 module.exports = router;
