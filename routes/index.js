@@ -1,6 +1,8 @@
 const { celebrate, Joi } = require('celebrate');
 const router = require('express').Router();
 const { createUser, login } = require('../controllers/users');
+const userRouter = require('./users');
+const auth = require('../middlewares/auth');
 const requestsValidation = require('../requestsValidation/requestsValidation');
 
 router.post('/signup', celebrate({
@@ -19,5 +21,7 @@ router.post('/signin', celebrate({
 }), login);
 
 router.use(auth);
+
+router.use('/users', userRouter);
 
 module.exports = router;
