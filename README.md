@@ -15,3 +15,10 @@
 
 ## Использованные технологии.
 Node.js, express.js, MongoDB
+
+Ссылки на проект
+IP 158.160.40.24
+
+Frontend https://tokarenko.nomoredomains.monster
+
+Backend https://api.tokarenko.nomoredomains.monster
