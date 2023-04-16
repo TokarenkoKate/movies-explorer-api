@@ -18,4 +18,6 @@ router.post('/signin', celebrate({
   }),
 }), login);
 
+router.use(auth);
+
 module.exports = router;
