@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cors = require('cors');
 const { errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes');
+const limiter = require('./limiter/limiter');
 const errorHandler = require('./middlewares/error-handler');
 const { PORT, DB_ADDRESS } = require('./config');
 
@@ -19,7 +21,19 @@ mongoose.connect(DB_ADDRESS, {
 
 app.use(helmet());
 
+app.use(limiter);
+
+app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(routes);
+
+app.use(errorLogger);
 
 app.use(errors());
 
