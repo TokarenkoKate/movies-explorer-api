@@ -4,7 +4,7 @@
   "description": "Backend for Movies explorer project",
   "main": "app.js",
   "scripts": {
-    "lint": "npx eslint .",
+    "lint": "npx eslint . --fix",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -33,5 +33,10 @@
     "mongoose": "^7.0.3",
     "validator": "^13.9.0",
     "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "nodemon": "^2.0.22"
   }
 }
