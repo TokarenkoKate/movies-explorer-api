@@ -7,7 +7,10 @@ const IncorrectDataError = require('../errors/incorrect-data-err');
 module.exports.getMovies = (req, res, next) => {
   Movie.find({})
     .populate(['owner'])
-    .then((movies) => res.send(movies))
+    .then((movies) => {
+      const currentUserMoviews = movies.filter((movie) => req.user._id === movie.owner.id);
+      res.send(currentUserMoviews);
+    })
     .catch(next);
 };
 
