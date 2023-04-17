@@ -50,7 +50,8 @@ module.exports.deleteMovie = (req, res, next) => {
       if (movie) {
         if (req.user._id === movie.owner.id) {
           movie.deleteOne()
-            .then(() => res.send({ message: 'Фильм удален.' }));
+            .then(() => res.send({ message: 'Фильм удален.' }))
+            .catch(next);
         } else {
           next(new ForbiddenAccess('Вы не можете удалить чужой фильм'));
         }

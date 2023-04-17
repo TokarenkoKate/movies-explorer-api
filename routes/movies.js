@@ -20,7 +20,7 @@ router.post('/', celebrate({
     image: requestsValidation.link,
     trailerLink: requestsValidation.link,
     thumbnail: requestsValidation.link,
-    movieId: requestsValidation.stringRequired,
+    movieId: requestsValidation.numberRequired,
   }),
 }), createMovie);
 
