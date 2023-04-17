@@ -7,6 +7,7 @@ const IncorrectAuthDataError = require('../errors/incorrect-auth-data-err');
 const NotFoundError = require('../errors/not-found-err');
 const User = require('../models/user');
 const { NODE_ENV, JWT_SECRET } = require('../config');
+const { ErrorMessages } = require('../constants/constants');
 
 module.exports.createUser = (req, res, next) => {
   const {
@@ -22,9 +23,9 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new UserExistsError('Пользователь с таким email уже существует.'));
+        next(new UserExistsError(ErrorMessages.duplicate_user));
       } else if (err instanceof mongoose.Error.ValidationError) {
-        next(new IncorrectDataError('Некорректные данные для создания пользователя.'));
+        next(new IncorrectDataError(ErrorMessages.invalid_create_user_data));
       } else {
         next(err);
       }
@@ -36,13 +37,13 @@ module.exports.login = (req, res, next) => {
 
   User.findOne({ email }).select('+password')
     .orFail(() => {
-      next(new IncorrectAuthDataError('Передан неверный логин или пароль'));
+      next(new IncorrectAuthDataError(ErrorMessages.invalid_email_or_password));
     })
     .then((user) => bcrypt.compare(password, user.password).then((matched) => {
       if (matched) {
         return user;
       }
-      return next(new IncorrectAuthDataError('Передан неверный логин или пароль'));
+      return next(new IncorrectAuthDataError(ErrorMessages.invalid_email_or_password));
     }))
     .then((user) => {
       const token = jwt.sign({ _id: user.id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev_secret', { expiresIn: '7d' });
@@ -57,12 +58,12 @@ module.exports.getCurrentUser = (req, res, next) => {
       if (user) {
         res.send(user);
       } else {
-        throw new NotFoundError('Пользователь по указанному _id не найден.');
+        throw new NotFoundError(ErrorMessages.user_with_id_not_found);
       }
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
-        next(new IncorrectDataError('Некорректный _id пользователя'));
+        next(new IncorrectDataError(ErrorMessages.invalid_user_id));
       } else {
         next(err);
       }
@@ -79,9 +80,9 @@ module.exports.updateProfile = (req, res, next) => {
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new UserExistsError('Пользователь с таким email уже существует.'));
+        next(new UserExistsError(ErrorMessages.duplicate_user));
       } else if (err instanceof mongoose.Error.ValidationError) {
-        next(new IncorrectDataError('Некорректные данные для обновления профиля.'));
+        next(new IncorrectDataError(ErrorMessages.invalid_update_user_data));
       } else {
         next(err);
       }
