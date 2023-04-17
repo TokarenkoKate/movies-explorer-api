@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const IncorrectAuthDataError = require('../errors/incorrect-auth-data-err');
 const { NODE_ENV, JWT_SECRET } = require('../config');
-const { ErrorMessages } = require('../constants/constants');
+const { ErrorMessages } = require('../constants/constants.js');
 
 const extractBearerToken = (authorization) => authorization.replace('Bearer ', '');
 

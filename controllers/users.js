@@ -7,7 +7,7 @@ const IncorrectAuthDataError = require('../errors/incorrect-auth-data-err');
 const NotFoundError = require('../errors/not-found-err');
 const User = require('../models/user');
 const { NODE_ENV, JWT_SECRET } = require('../config');
-const { ErrorMessages } = require('../constants/constants');
+const { ErrorMessages } = require('../constants/constants.js');
 
 module.exports.createUser = (req, res, next) => {
   const {

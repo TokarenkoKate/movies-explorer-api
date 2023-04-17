@@ -4,7 +4,7 @@
   "description": "Backend for Movies explorer project",
   "main": "app.js",
   "scripts": {
-    "lint": "npx eslint . --fix",
+    "lint": "npx eslint .",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },

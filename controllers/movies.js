@@ -3,7 +3,7 @@ const Movie = require('../models/movie');
 const NotFoundError = require('../errors/not-found-err');
 const ForbiddenAccess = require('../errors/forbidden-access-err');
 const IncorrectDataError = require('../errors/incorrect-data-err');
-const { ErrorMessages, SuccessMessages } = require('../constants/constants');
+const { ErrorMessages, SuccessMessages } = require('../constants/constants.js');
 
 module.exports.getMovies = (req, res, next) => {
   Movie.find({})

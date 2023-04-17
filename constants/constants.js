@@ -10,7 +10,7 @@ const ErrorMessages = {
   duplicate_user: 'Пользователь с таким email уже существует.',
   invalid_user_id: 'Некорректный _id пользователя',
   require_auth: 'Необходима авторизация.',
-  server_error: 'На сервере произошла ошибка:'
+  server_error: 'На сервере произошла ошибка:',
 };
 
 const SuccessMessages = {
@@ -37,7 +37,6 @@ const ValidationsErrors = {
   email_required: 'Поле "email" должно быть заполнено.',
   invalid_email: 'Некорректный email',
   password_required: 'Поле "password" должно быть заполнено.',
-
-}
+};
 
 module.exports = { ErrorMessages, SuccessMessages, ValidationsErrors };
