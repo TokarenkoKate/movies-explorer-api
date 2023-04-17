@@ -78,7 +78,9 @@ module.exports.updateProfile = (req, res, next) => {
   })
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err instanceof mongoose.Error.ValidationError) {
+      if (err.code === 11000) {
+        next(new UserExistsError('Пользователь с таким email уже существует.'));
+      } else if (err instanceof mongoose.Error.ValidationError) {
         next(new IncorrectDataError('Некорректные данные для обновления профиля.'));
       } else {
         next(err);
