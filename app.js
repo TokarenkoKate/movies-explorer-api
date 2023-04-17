@@ -21,9 +21,9 @@ mongoose.connect(DB_ADDRESS, {
 
 app.use(helmet());
 
-app.use(limiter);
-
 app.use(requestLogger);
+
+app.use(limiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
