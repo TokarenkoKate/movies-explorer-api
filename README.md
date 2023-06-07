@@ -1,24 +1,20 @@
-# Проект Movies Explorer
+## Backend for Movies Explorer
+https://tokarenko.nomoredomains.monster
 
-Данная работа является дипломным проектом для курса ["Веб-разработчик" Яндекс Практикума](https://practicum.yandex.ru/web/).
+The final project on the web faculty at [Yandex.practicum](https://practicum.yandex.ru/) is done.
 
-## Директории
+This is a service where you can search for movies on demand and save them in your personal account.
 
-`/routes` — папка с файлами роутера  
-`/controllers` — папка с файлами контроллеров пользователя и фильмов   
-`/models` — папка с файлами описания схем пользователя и фильма  
+Here's what was done:
 
-## Запуск проекта
-
-`npm run start` — запускает сервер   
-`npm run dev` — запускает сервер с hot-reload
-
-## Использованные технологии.
-Node.js, express.js, MongoDB
-
-Ссылки на проект
-IP 158.160.40.24
-
-Frontend https://tokarenko.nomoredomains.monster
-
-Backend https://api.tokarenko.nomoredomains.monster
+- set up infrastructure and created **Express server**;
+- connected **MongoDB database**, created API schemas and resource models;
+- implemented **logging**, **authentication** and **authorization** on the server;
+- the backend was deployed on **Yandex Сloud**;
+- components made up in **React**, markup was ported to the React format;
+- described the logic and layout of registration, login, profile editing, and saved movies pages;
+- asynchronous **GET-** and **POST-** requests to the API were implemented;
+- **authorized** and **unauthorized** states, saving movies in the profile were worked out;
+- received movies are **filtered** on the client side.
+- localization with **react-i18next**
+- Tools and stack: **HTML**, **CSS**, **React**, **Express**, **MongoDB**, **NodeJS**, **API**, **Nginx**, **JWT**, **Postman**
